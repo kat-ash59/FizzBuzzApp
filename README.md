@@ -27,3 +27,5 @@ modulus
 
 ### Lessons Learned
 need to be careful where you put the checks so that you get proper output for combinations 
+
+also need to add new line between comments in README or they mush together
