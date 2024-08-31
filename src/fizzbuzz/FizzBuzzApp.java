@@ -35,13 +35,16 @@ public class FizzBuzzApp
 		// declare variables
 		int counter = 1;
 		
+
 		
 		// setting up while loop and initially going to just display print out of 1 to 100
 		while (counter <= 100)
 		{
-			// now adding code for printing fizz
-			// next adding code for printing buzz
-			// next adding code for fizzbuzz - note need to add it first so that it will print fizzbuzz instead of fizz or buzz
+			// first added counter and printed it out - is now else statement
+			// now adding code for printing fizz - is now else if
+			// next adding code for printing buzz -- is now else if
+			// next adding code for fizzbuzz - 
+			// note need to add fizzbuzz first so that it will print fizzbuzz instead of fizz or buzz
 			if (((counter % 3) == 0) && ((counter % 5) == 0))
 			{
 				System.out.println("fizzbuzz");
