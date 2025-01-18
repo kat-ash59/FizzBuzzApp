@@ -135,6 +135,8 @@ public class HiLo
 			System.out.print("Please enter yes or no ");
 			userWantToPlay = keyboard.next();
 			
+			// now need to validate if they entered "yes" or "no"
+			userWantToPlay = checkAnswer(userWantToPlay);
 			
 			// almost forgot that i needed to get a new random number
 			// lol was using same random number over and over again derp de derp
@@ -169,7 +171,8 @@ public class HiLo
 		
 		while (leaveLoop == 0)
 		{
-			if ((userAnswer.equalsIgnoreCase("yes")) || (userAnswer.equalsIgnoreCase("y")))
+			if ((userAnswer.equalsIgnoreCase("yes")) || (userAnswer.equalsIgnoreCase("y")) ||
+			    (userAnswer.equalsIgnoreCase("no")) || (userAnswer.equalsIgnoreCase("n")))
 			{
 				leaveLoop = 1;
 			}
