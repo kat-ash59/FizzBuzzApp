@@ -1,187 +1,75 @@
-/*
-Your program will use Math.random to generate a random number between 1 and 20. 
+// starting with
+// User Story #1
+// The program prints the numbers 1-100 to the console.
 
-This is the secret number your player is trying to guess. Do not show this number to the user.
+// Woot Woot User Story 1 worked just fine
 
-The user will have 5 tries per round to correctly guess the generated number.
+// now onto
+// User Story #2
+// If a number is divisible by 3 replace the numeric console output with the word “fizz”.
 
-The game continues until the user has decides to exit the game.
 
-At this time, assume the user knows to and will always enter a number. Don't worry about handling users that don't read instructions at this time :-D .
+// woot woot User 2 works just like it is supposed to do
 
-User Story #0
-Generate a random number, falling in the range of 1 and 20, and store this into a variable. been there done that!!!
+// now on to
+// User Story #3
+// If a number is divisible by 5 replace the numeric console output with the word “buzz”.
 
-now on to User Story #1
-Prompt the user for a number between 1 and 20.
+// now that was fun!! user story 3 worked as planned
 
-User Story #2
-The program will compare their guess with the current value of the randomly generated number.
+// drum roll please!!!!
+// now onto
+// User Story #4
+// If a number is divisible by both 3 and 5 replace the numeric console output with "fizzbuzz".
 
-User Story #3
-If they are equal, notify the player they have won.
+// Yippiee Ki-Yay MF!!! it worked!!!!! i may still have a bit of a programmer left in me!
 
-If their guess is not correct, notify the user whether their guess is too high or too low.
 
-User Story #4
-If the user guessed incorrectly, they will be prompted to guess again, for a max of 5 tries.
+package fizzbuzz;
 
-User Story #5
-If the user has not guessed the correct number within 5 attempts, inform the user politely that
- they missed this round, and display the generated number they missed.
-
-*/
-package hilo;
-import java.util.Scanner;
-import java.util.Random;
-
-public class HiLo 
+public class FizzBuzzApp 
 {
-	public static Scanner keyboard;
-	
+
 	public static void main(String[] args) 
 	{
 		// declare variables
-		keyboard = new Scanner(System.in);
-		int computerGuess = 0;
-		int userGuess = 0;
-		String userWantToPlay = "";
+		int counter = 1;
 		
-		// initialize the computer guess as a random number
-		Random randomNumber = new Random();
-		
-		// set the computer guess to a random number between 1 - 20
-		computerGuess = randomNumber.nextInt(20);
-		
-		// what is the computer guess going into game
-		// System.out.println("computer guess = " + computerGuess);
-		
-		// going to print out the rules of Hi / Lo game
-		printRules();
-		
-		// now telling the user the name of the game and ask if they would like to play
-		System.out.println("Would you like to play a game of Hi / Lo?\n");
-		System.out.print("Please enter yes or no ");
-		userWantToPlay = keyboard.next();
-		
-		// now need to validate if they entered "yes" or "no"
-		userWantToPlay = checkAnswer(userWantToPlay);
-		
-		// set firstime = true;
-		boolean firstTime = true;
-		
-		// added ignore case
-		while ((userWantToPlay.equalsIgnoreCase("yes"))  ||  (userWantToPlay.equalsIgnoreCase("y")))
+		System.out.println("\nWelcome to the famous FizzBuzz application!\n");
+		System.out.println("Where:");
+		System.out.println("1) If a number is divisible by 3 replace the numeric console output with the word “fizz”.");
+		System.out.println("2) If a number is divisible by 5 replace the numeric console output with the word “buzz”.");
+		System.out.println("3) If a number is divisible by 3 and 5 replace the numeric console output with the word “fizzbuzz”.");
+		System.out.println("\n\n");
+		// setting up while loop and initially going to just display print out of 1 to 100
+		while (counter <= 100)
 		{
-
-			if (firstTime)
+			// first added counter and printed it out - is now else statement
+			// now adding code for printing fizz - is now else if
+			// next adding code for printing buzz -- is now else if
+			// next adding code for fizzbuzz - 
+			// note need to add fizzbuzz first so that it will print fizzbuzz instead of fizz or buzz
+			if (((counter % 3) == 0) && ((counter % 5) == 0))
 			{
-				System.out.print("\nPlease enter your first guess ");
+				System.out.println("\tfizzbuzz");
+			}
+			else if ((counter % 3) == 0)
+			{
+				System.out.println("\tfizz");
+				
+			}
+			else if ((counter % 5) == 0)
+			{
+				System.out.println("\tbuzz");
 			}
 			else
 			{
-				firstTime = false;
-				System.out.print("\nPlease enter your next guess ");
+				System.out.println("\t" + counter);
 			}
-			userGuess = keyboard.nextInt();
-			
-			int i;
-			
-			// while loop for user to guess the number
-			for (i = 1; i <= 6; i++)
-			{	
-			    
-				// adding debug to see value of i to make sure break happens for if i > 5
-				// can't have more than 5 tries
-				// System.out.println("that was guess number = " + i);
-				
-				if ((i >= 5) && (userGuess != computerGuess))
-				{
-					
-					System.out.println("Sorry you loose, you took to many turns :(!!!!!");
-					System.out.println("\tYour last choice was " + userGuess);
-					System.out.println("\tThe computers number was " + computerGuess + "\n\n");
-					// should break out of for loop here
-					break;
-				}
-				else if (userGuess < computerGuess)
-				{
-					System.out.println("Nope your guess " + userGuess + " is too low!!!\n");
-				}
-				else if (userGuess > computerGuess)
-				{
-					System.out.println("Wrong!!! your guess " + userGuess + " is too high!!\n");
-				}
-				else if (userGuess == computerGuess)
-				{
-					System.out.println("\n\n!!!!! Huzzahhhh Dilly Dilly You Won !!!!!\n");
-					break;
-				}
-				
-				System.out.print("Please enter you next guess ");
-				userGuess = keyboard.nextInt();
-				
-				
-				
-				
-				
-				
-			} // end for loop of user guesses
-			
-			
-			// thing to note if user enters no it will end the while loop
-			// but need to make sure test for yes or no
-			System.out.println("Would you like to play again?");
-			System.out.print("Please enter yes or no ");
-			userWantToPlay = keyboard.next();
-			
-			// now need to validate if they entered "yes" or "no"
-			userWantToPlay = checkAnswer(userWantToPlay);
-			
-			// almost forgot that i needed to get a new random number
-			// lol was using same random number over and over again derp de derp
-			// set the computer guess to a random number between 1 - 20
-			computerGuess = randomNumber.nextInt(20);
-			// System.out.println("what is computer guess for new game = " + computerGuess);
-			
-						
+			counter ++;
 		} // end while loop
-				
-		
-		System.out.println("\nThank you for playing our game!!! \nHope you had fun!\n");
-		
-		// don't forget to close your keyboard!
-		keyboard.close();
 		
 
 	} // end main
-	
-	public static void printRules()
-	{
-		System.out.println("\n\nYou will need to enter a guess between 1 and 20");
-		System.out.println("You will only have 5 tries to guess the number that the computer has guessed");
-		System.out.println("If you guess the number you Win!!!");
-		System.out.println("otherwise ..... :(\n\n");
-		
-	} // end printRules
-	
-	private static String checkAnswer(String userAnswer)
-	{
-		int leaveLoop = 0;
-		
-		while (leaveLoop == 0)
-		{
-			if ((userAnswer.equalsIgnoreCase("yes")) || (userAnswer.equalsIgnoreCase("y")) ||
-			    (userAnswer.equalsIgnoreCase("no")) || (userAnswer.equalsIgnoreCase("n")))
-			{
-				leaveLoop = 1;
-			}
-			else
-			{
-				System.out.print("Please enter yes or no ");
-				userAnswer = HiLo.keyboard.next();
-			}
-		}
-		return userAnswer;
-	}
-} // end HiLo class
+
+} // end class FizzBuzzApp
